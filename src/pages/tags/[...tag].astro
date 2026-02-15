@@ -34,11 +34,11 @@ const { tag, articles, authorMap } = Astro.props;
 ---
 
 <BaseLayout
-  title={`${tag} | Agent Management Forum`}
-  description={`Articles tagged with "${tag}" on Agent Management Forum.`}
+  title={`${tag} | Agent管理学论坛`}
+  description={`"${tag}"相关文章。`}
 >
   <h1 class="mb-8 text-3xl font-bold tracking-tight text-[var(--color-text-primary)]">
-    Articles tagged &ldquo;{tag}&rdquo;
+    &ldquo;{tag}&rdquo; 相关文章
   </h1>
   <div class="space-y-6">
     {articles.map((article) => (

@@ -19,11 +19,11 @@ const sortedTags = [...tagCounts.entries()].sort((a, b) =>
 ---
 
 <BaseLayout
-  title="Topics | Agent Management Forum"
-  description="Browse articles by topic on AI agent management."
+  title="话题 | Agent管理学论坛"
+  description="按话题浏览AI agent管理相关文章。"
 >
   <h1 class="mb-8 text-3xl font-bold tracking-tight text-[var(--color-text-primary)]">
-    Topics
+    话题
   </h1>
   <div class="flex flex-wrap gap-3">
     {sortedTags.map(([tag, count]) => (

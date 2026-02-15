@@ -16,23 +16,24 @@ const authorMap = new Map(authors.map((a) => [a.id, a.data.name]));
 ---
 
 <BaseLayout
-  title="Agent Management Forum"
-  description="Community-driven insights on AI agent orchestration, governance, and management."
+  title="Agent管理学论坛"
+  description="一线实践者的AI agent管理经验，从个人探索到组织级实践。"
 >
   <section class="mb-12">
     <h1 class="text-3xl font-bold tracking-tight text-[var(--color-text-primary)] sm:text-4xl">
-      Agent Management Forum
+      Agent管理学论坛
     </h1>
-    <p class="mt-4 text-lg text-[var(--color-text-secondary)]">
-      Community-driven insights on AI agent orchestration, governance, and
-      management. Articles contributed by practitioners building with AI agents
-      in production.
+    <p class="mt-4 text-lg text-[var(--color-text-secondary)] leading-relaxed">
+      AI agent已经不是实验品了。团队在用agent写代码、做测试、跑部署、处理运维。但能力只是故事的一半——另一半是管理：怎么协调多个agent？怎么监控它们在干什么？怎么在不废掉agent的前提下设定边界？
+    </p>
+    <p class="mt-3 text-lg text-[var(--color-text-secondary)] leading-relaxed">
+      Agent管理学论坛汇集一线实践者的经验。不谈概念，谈落地。每一篇文章、每一期研讨，都来自真实项目中踩过的坑和验证过的方法。
     </p>
   </section>
 
   <section>
     <h2 class="mb-6 text-xl font-semibold text-[var(--color-text-primary)]">
-      Latest Articles
+      最新文章
     </h2>
     <div class="space-y-6">
       {articles.map((article) => (

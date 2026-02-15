@@ -2,9 +2,9 @@
 import ThemeToggle from './ThemeToggle.astro';
 
 const navLinks = [
-  { href: '/articles', label: 'Articles' },
-  { href: '/authors', label: 'Contributors' },
-  { href: '/tags', label: 'Topics' },
+  { href: '/articles', label: '文章' },
+  { href: '/authors', label: '作者' },
+  { href: '/tags', label: '话题' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -13,7 +13,7 @@ const currentPath = Astro.url.pathname;
 <header class="border-b border-[var(--color-surface-border)] bg-[var(--color-surface)]">
   <nav class="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
     <a href="/" class="text-xl font-bold text-[var(--color-text-primary)] hover:text-[var(--color-primary-600)] dark:hover:text-[var(--color-primary-400)] transition-colors">
-      AMF
+      Agent管理学论坛
     </a>
     <div class="flex items-center gap-6">
       {navLinks.map(({ href, label }) => (

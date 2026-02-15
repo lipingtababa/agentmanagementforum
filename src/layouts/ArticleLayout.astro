@@ -18,7 +18,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-GB', {
 });
 ---
 
-<BaseLayout title={`${title} | Agent Management Forum`} description={description}>
+<BaseLayout title={`${title} | Agent管理学论坛`} description={description}>
   <article>
     <header class="mb-8">
       <h1 class="text-3xl font-bold tracking-tight text-[var(--color-text-primary)] sm:text-4xl">
@@ -39,7 +39,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-GB', {
       </div>
       {original_url && (
         <p class="mt-4 rounded-md bg-[var(--color-surface-alt)] border border-[var(--color-surface-border)] px-4 py-2 text-sm text-[var(--color-text-secondary)]">
-          Originally published at{' '}
+          原文发布于{' '}
           <a
             href={original_url}
             class="text-[var(--color-primary-600)] dark:text-[var(--color-primary-400)] underline"

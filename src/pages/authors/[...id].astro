@@ -29,7 +29,7 @@ const { Content } = await render(author);
 ---
 
 <BaseLayout
-  title={`${name} | Agent Management Forum`}
+  title={`${name} | Agent管理学论坛`}
   description={bio}
 >
   <div class="mb-8">
@@ -78,7 +78,7 @@ const { Content } = await render(author);
   {articles.length > 0 && (
     <section>
       <h2 class="mb-6 text-xl font-semibold text-[var(--color-text-primary)]">
-        Articles by {name}
+        {name}的文章
       </h2>
       <div class="space-y-6">
         {articles.map((article) => (
