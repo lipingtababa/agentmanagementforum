@@ -2,7 +2,7 @@
 name: AMF Editorial Team
 bio: The Agent Management Forum editorial team curates and publishes insights on AI agent orchestration, governance, and best practices.
 website: https://agentmanagementforum.com
-github: machimachida
+github: lipingtababa
 ---
 
 The Agent Management Forum editorial team brings together practitioners, researchers, and builders working at the frontier of AI agent management. We curate articles that help teams navigate the complexities of deploying, orchestrating, and governing autonomous AI agents in production environments.
