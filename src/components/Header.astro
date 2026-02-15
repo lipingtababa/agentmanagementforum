@@ -5,6 +5,7 @@ const navLinks = [
   { href: '/articles', label: '文章' },
   { href: '/authors', label: '作者' },
   { href: '/tags', label: '话题' },
+  { href: 'https://magong.se/', label: 'MaGong', external: true },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -16,12 +17,13 @@ const currentPath = Astro.url.pathname;
       Agent管理学论坛
     </a>
     <div class="flex items-center gap-6">
-      {navLinks.map(({ href, label }) => (
+      {navLinks.map(({ href, label, external }) => (
         <a
           href={href}
+          {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           class:list={[
             'text-sm font-medium transition-colors',
-            currentPath.startsWith(href)
+            !external && currentPath.startsWith(href)
               ? 'text-[var(--color-primary-600)] dark:text-[var(--color-primary-400)]'
               : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]',
           ]}
