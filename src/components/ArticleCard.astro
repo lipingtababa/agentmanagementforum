@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import TagList from './TagList.astro';
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+  authorName: string;
+}
+
+const { article, authorName } = Astro.props;
+const { title, description, date, tags, author } = article.data;
+
+const formattedDate = new Date(date).toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="rounded-lg border border-[var(--color-surface-border)] bg-[var(--color-surface)] p-6 transition-shadow hover:shadow-md">
+  <a href={`/articles/${article.id}`} class="block">
+    <h2 class="text-lg font-semibold text-[var(--color-text-primary)] hover:text-[var(--color-primary-600)] dark:hover:text-[var(--color-primary-400)] transition-colors">
+      {title}
+    </h2>
+  </a>
+  <p class="mt-2 text-sm text-[var(--color-text-secondary)]">{description}</p>
+  <div class="mt-4 flex flex-wrap items-center gap-3 text-xs text-[var(--color-text-muted)]">
+    <a
+      href={`/authors/${author.id}`}
+      class="font-medium hover:text-[var(--color-text-primary)] transition-colors"
+    >
+      {authorName}
+    </a>
+    <span>&middot;</span>
+    <time datetime={date.toISOString()}>{formattedDate}</time>
+  </div>
+  <div class="mt-3">
+    <TagList tags={tags} />
+  </div>
+</article>

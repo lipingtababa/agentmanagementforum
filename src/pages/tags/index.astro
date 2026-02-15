@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const articles = await getCollection('articles', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
+
+const tagCounts = new Map<string, number>();
+for (const article of articles) {
+  for (const tag of article.data.tags) {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  }
+}
+
+const sortedTags = [...tagCounts.entries()].sort((a, b) =>
+  a[0].localeCompare(b[0])
+);
+---
+
+<BaseLayout
+  title="Topics | Agent Management Forum"
+  description="Browse articles by topic on AI agent management."
+>
+  <h1 class="mb-8 text-3xl font-bold tracking-tight text-[var(--color-text-primary)]">
+    Topics
+  </h1>
+  <div class="flex flex-wrap gap-3">
+    {sortedTags.map(([tag, count]) => (
+      <a
+        href={`/tags/${tag}`}
+        class="inline-flex items-center gap-2 rounded-full bg-[var(--color-surface-alt)] border border-[var(--color-surface-border)] px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] hover:border-[var(--color-primary-500)] hover:text-[var(--color-primary-600)] dark:hover:text-[var(--color-primary-400)] transition-colors"
+      >
+        {tag}
+        <span class="rounded-full bg-[var(--color-primary-100)] dark:bg-[var(--color-primary-900)] px-2 py-0.5 text-xs text-[var(--color-primary-700)] dark:text-[var(--color-primary-300)]">
+          {count}
+        </span>
+      </a>
+    ))}
+  </div>
+</BaseLayout>

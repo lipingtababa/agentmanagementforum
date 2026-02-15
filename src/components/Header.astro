@@ -1,0 +1,35 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const navLinks = [
+  { href: '/articles', label: 'Articles' },
+  { href: '/authors', label: 'Contributors' },
+  { href: '/tags', label: 'Topics' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="border-b border-[var(--color-surface-border)] bg-[var(--color-surface)]">
+  <nav class="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
+    <a href="/" class="text-xl font-bold text-[var(--color-text-primary)] hover:text-[var(--color-primary-600)] dark:hover:text-[var(--color-primary-400)] transition-colors">
+      AMF
+    </a>
+    <div class="flex items-center gap-6">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class:list={[
+            'text-sm font-medium transition-colors',
+            currentPath.startsWith(href)
+              ? 'text-[var(--color-primary-600)] dark:text-[var(--color-primary-400)]'
+              : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]',
+          ]}
+        >
+          {label}
+        </a>
+      ))}
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>

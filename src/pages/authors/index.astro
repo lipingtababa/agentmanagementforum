@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AuthorBadge from '../../components/AuthorBadge.astro';
+
+const authors = await getCollection('authors');
+---
+
+<BaseLayout
+  title="Contributors | Agent Management Forum"
+  description="Meet the contributors sharing insights on AI agent management."
+>
+  <h1 class="mb-8 text-3xl font-bold tracking-tight text-[var(--color-text-primary)]">
+    Contributors
+  </h1>
+  <div class="grid gap-4 sm:grid-cols-2">
+    {authors.map((author) => <AuthorBadge author={author} />)}
+  </div>
+</BaseLayout>

@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import TagList from '../components/TagList.astro';
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+  authorName: string;
+}
+
+const { article, authorName } = Astro.props;
+const { title, description, author, date, tags, original_url } = article.data;
+
+const formattedDate = new Date(date).toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${title} | Agent Management Forum`} description={description}>
+  <article>
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold tracking-tight text-[var(--color-text-primary)] sm:text-4xl">
+        {title}
+      </h1>
+      <div class="mt-4 flex flex-wrap items-center gap-3 text-sm text-[var(--color-text-muted)]">
+        <a
+          href={`/authors/${author.id}`}
+          class="font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+        >
+          {authorName}
+        </a>
+        <span>&middot;</span>
+        <time datetime={date.toISOString()}>{formattedDate}</time>
+      </div>
+      <div class="mt-4">
+        <TagList tags={tags} />
+      </div>
+      {original_url && (
+        <p class="mt-4 rounded-md bg-[var(--color-surface-alt)] border border-[var(--color-surface-border)] px-4 py-2 text-sm text-[var(--color-text-secondary)]">
+          Originally published at{' '}
+          <a
+            href={original_url}
+            class="text-[var(--color-primary-600)] dark:text-[var(--color-primary-400)] underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {new URL(original_url).hostname}
+          </a>
+        </p>
+      )}
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

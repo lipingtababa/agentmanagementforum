@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  author: CollectionEntry<'authors'>;
+}
+
+const { author } = Astro.props;
+const { name, bio, avatar } = author.data;
+---
+
+<a
+  href={`/authors/${author.id}`}
+  class="flex items-center gap-3 rounded-lg border border-[var(--color-surface-border)] bg-[var(--color-surface)] p-4 transition-shadow hover:shadow-md"
+>
+  {avatar ? (
+    <img
+      src={avatar}
+      alt={name}
+      class="h-10 w-10 rounded-full object-cover"
+    />
+  ) : (
+    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-primary-100)] dark:bg-[var(--color-primary-900)] text-[var(--color-primary-700)] dark:text-[var(--color-primary-300)] font-semibold text-sm">
+      {name.charAt(0).toUpperCase()}
+    </div>
+  )}
+  <div class="min-w-0 flex-1">
+    <p class="font-medium text-[var(--color-text-primary)] truncate">{name}</p>
+    <p class="text-sm text-[var(--color-text-muted)] truncate">{bio}</p>
+  </div>
+</a>
